@@ -11,6 +11,7 @@ import {
   Eye,
   Search,
   Loader2,
+  Moon,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import WindAnimation from "./WindGust.json";
@@ -313,30 +314,36 @@ export default function Weather() {
   };
 
   const getWeatherIcon = (condition) => {
+    if (!condition) return <Cloud className="h-20 w-20 text-white/50" />
+    const now = Math.floor(Date.now() / 1000);
+    const isDay = now >= WData.sys.sunrise && now <= WData.sys.sunset;
+
     switch (condition.toLowerCase()) {
       case "clear":
-        return (
+        return isDay ? (
           <Sun className="h-20 w-20 text-yellow-300 drop-shadow-lg animate-pulse" />
+        ) : (
+          <Moon className="h-20 w-20 text-indigo-200 drop-shadow-lg animate-pulse" />
         );
+
       case "clouds":
         return <Cloud className="h-20 w-20 text-white drop-shadow-lg" />;
+
       case "rain":
         return <CloudRain className="h-20 w-20 text-blue-200 drop-shadow-lg" />;
+
       default:
-        return (
-          <Sun className="h-20 w-20 text-yellow-300 drop-shadow-lg animate-pulse" />
-        );
+      return isDay ? (
+        <Sun className="h-20 w-20 text-yellow-300 drop-shadow-lg animate-pulse" />
+      ) : (
+        <Moon className="h-20 w-20 text-indigo-200 drop-shadow-lg animate-pulse" />
+      );
     }
   };
 
   return (
     <>
-      <div
-        className={`min-h-screen bg-gradient-to-br ${getWeatherGradient(
-          WData.weather[0].main,
-          WData.weather[0].description
-        )} relative overflow-hidden`}
-      >
+      <div className="min-h-screen bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -486,28 +493,28 @@ export default function Weather() {
                       </span>
                     ),
                   },
-                  {
-                    icon: (
-                      <div className="w-6 h-6">
-                        <Lottie
-                          animationData={EyeAnimation}
-                          loop={true}
-                          autoplay={true}
-                          style={{ width: "30px", height: "34px" }}
-                        />
-                      </div>
-                    ),
-                    label: (
-                      <span className="text-sm  extra font-semibold ">
-                        Visibility
-                      </span>
-                    ),
-                    value: (
-                      <span className="text-xl extra">
-                        {WData.visibility} km
-                      </span>
-                    ),
-                  },
+                  // {
+                  //   icon: (
+                  //     <div className="w-6 h-6">
+                  //       <Lottie
+                  //         animationData={EyeAnimation}
+                  //         loop={true}
+                  //         autoplay={true}
+                  //         style={{ width: "30px", height: "34px" }}
+                  //       />
+                  //     </div>
+                  //   ),
+                  //   label: (
+                  //     <span className="text-sm  extra font-semibold ">
+                  //       Visibility
+                  //     </span>
+                  //   ),
+                  //   value: (
+                  //     <span className="text-xl extra">
+                  //       {WData.visibility} km
+                  //     </span>
+                  //   ),
+                  // },
                 ].map((stat, i) => (
                   <div
                     key={i}
@@ -539,7 +546,9 @@ export default function Weather() {
           {/* Forecast */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="col-span-1 bg-white/20 p-6 rounded-2xl backdrop-blur-xl border border-white/30">
-              <h3 className="text-xl text-white font-bold mb-4 extra">Hourly</h3>
+              <h3 className="text-xl text-white font-bold mb-4 extra">
+                Hourly
+              </h3>
               <HourForecast data={fData} />
             </div>
             <div className="col-span-1 bg-white/20 p-6 rounded-2xl backdrop-blur-xl border border-white/30">

@@ -1,12 +1,86 @@
-# React + Vite
+# 🌤️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive **Weather App** built with **React, Tailwind CSS, and Lucide Icons**.  
+It fetches real-time weather data from the **OpenWeatherMap API**, showing current conditions, hourly forecast, and 7-day forecast.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🌍 Search weather by city name  
+- ☀️ Dynamic **Sun/Moon icons** based on day/night  
+- 🌈 Beautiful animated background gradients based on weather conditions  
+- 📊 Hourly forecast (next 6 hours)  
+- 📅 7-day forecast with high/low temps, wind, humidity & precipitation  
+- ⚠️ Weather alerts for wind, humidity, and visibility  
+- 🎨 Glassmorphism UI with Tailwind CSS + animations  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **React** – Frontend framework  
+- **Tailwind CSS** – Styling and responsive design  
+- **Lucide React Icons** – Weather & UI icons  
+- **Lottie Animations** – For smooth animated effects  
+- **OpenWeatherMap API** – Weather data source  
+
+---
+
+## 🚀 Installation & Setup
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/sujalshah593/Weather-App.git
+cd my-app
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+---
+
+## 🔑 API Key Setup
+
+This app uses **OpenWeatherMap API**.  
+
+1. Get a free API key from [OpenWeatherMap](https://openweathermap.org/api).  
+2. Replace the API key in `Weather.js`:
+
+```js
+const API_KEY = "your_api_key_here";
+```
+
+---
+
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+1. Fork the repo  
+2. Create a new branch (`feature-branch`)  
+3. Commit your changes  
+4. Push and create a Pull Request  
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+Feel free to use and modify it for your own projects.
+
+---
+
+### 💡 Inspiration
+Built as a learning project for working with APIs, React state management, and UI animations.
